@@ -1,22 +1,5 @@
 version: "3"
 services:
-  aspnetapp:
-    image: wings-aspnetapp-img
-    build: ./aspnetapp
-    container_name: wings-aspnetapp-ctr
-    volumes:
-      - "./aspnetapp/WINGS/TlmCmd:/app/TlmCmd" 
-      - "./aspnetapp/WINGS/Logs:/app/Logs"
-    environment:
-      ConnectionStrings__DefaultConnection: "server=mysql; uid=root; pwd=P@ssw0rd!; database=wings;"
-      ASPNETCORE_URLS: "https://+;http://+"
-      ASPNETCORE_HTTPS_PORT: 5001
-      ASPNETCORE_Kestrel__Certificates__Default__Password: "P@ssw0rd!"
-      ASPNETCORE_Kestrel__Certificates__Default__Path: "/app/certificate.pfx"
-    ports:
-      - "5001:5001"
-    depends_on:
-      - mysql
   mysql:
     image: wings-mysql-img
     build: ./mysql
